@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app-angular:
+    image: app-angular:latest
+    container_name: app-angular
+    build: ../docker-app/
+    ports:
+      - 4200:4200
+    networks:
+      - contendor
+    # environment:
+    #   NODE_ENV: local
+
+
+  app-nestjs:
+    image: api-docker:latest
+    container_name: api-docker
+    build: ../api-docker/
+    ports:
+      - 3000:3000
+    networks:
+      - contendor
+    # environment:
+    #   NODE_ENV: local
+
+networks:
+  contendor:
+    external: false
